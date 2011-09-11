@@ -1,6 +1,6 @@
 package JIRA::Client::REST;
 {
-  $JIRA::Client::REST::VERSION = '0.02';
+  $JIRA::Client::REST::VERSION = '0.03';
 }
 use Moose;
 
@@ -203,7 +203,7 @@ JIRA::Client::REST - JIRA REST Client
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
