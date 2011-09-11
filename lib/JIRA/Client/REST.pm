@@ -1,6 +1,6 @@
 package JIRA::Client::REST;
 {
-  $JIRA::Client::REST::VERSION = '0.01';
+  $JIRA::Client::REST::VERSION = '0.02';
 }
 use Moose;
 
@@ -203,7 +203,7 @@ JIRA::Client::REST - JIRA REST Client
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -214,7 +214,7 @@ version 0.01
         password => 'password',
         url => 'http://jira.mycompany.com',
     );
-    my $issue = $client->get_issue('PRGPRESENTS-12');
+    my $issue = $client->get_issue('TICKET-12');
     print $issue->{fields}->{priority}->{value}->{name}."\n";
 
 =head1 DESCRIPTION
