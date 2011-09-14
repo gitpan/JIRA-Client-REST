@@ -1,6 +1,6 @@
 package JIRA::Client::REST;
 {
-  $JIRA::Client::REST::VERSION = '0.03';
+  $JIRA::Client::REST::VERSION = '0.04';
 }
 use Moose;
 
@@ -105,7 +105,7 @@ has '_client' => (
             trace => $self->debug,
         );
         $client->enable('Format::JSON');
-        $client->enable('Auth::Basic', username => 'cory.watson', password => '#.n883%P6VzEZg');
+        $client->enable('Auth::Basic', username => $self->username, password => $self->password);
         return $client;
     }
 );
@@ -203,7 +203,7 @@ JIRA::Client::REST - JIRA REST Client
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
