@@ -1,6 +1,6 @@
 package JIRA::Client::REST;
 {
-  $JIRA::Client::REST::VERSION = '0.04';
+  $JIRA::Client::REST::VERSION = '0.05';
 }
 use Moose;
 
@@ -12,6 +12,7 @@ use Net::HTTP::Spore;
 
 has '_client' => (
     is => 'rw',
+    lazy => 1,
     default => sub {
         my $self = shift;
 
@@ -113,6 +114,7 @@ has '_client' => (
 has 'debug' => (
     is => 'rw',
     isa => 'Bool',
+    default => 0,
 );
 
 
@@ -203,7 +205,7 @@ JIRA::Client::REST - JIRA REST Client
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
