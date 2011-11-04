@@ -1,6 +1,6 @@
 package JIRA::Client::REST;
 {
-  $JIRA::Client::REST::VERSION = '0.05';
+  $JIRA::Client::REST::VERSION = '0.06';
 }
 use Moose;
 
@@ -62,6 +62,30 @@ has '_client' => (
                         ],
                         "optional_params": [
                             "expand"
+                        ],
+                        "method": "GET",
+                        "authentication": true
+                    },
+                    "get_project": {
+                        "path": "/rest/api/latest/project/:key",
+                        "required_params": [
+                            "key"
+                        ],
+                        "method": "GET",
+                        "authentication": true
+                    },
+                    "get_project_versions": {
+                        "path": "/rest/api/latest/project/:key/versions",
+                        "required_params": [
+                            "key"
+                        ],
+                        "method": "GET",
+                        "authentication": true
+                    },
+                    "get_version": {
+                        "path": "/rest/api/latest/version/:id",
+                        "required_params": [
+                            "id"
                         ],
                         "method": "GET",
                         "authentication": true
@@ -167,6 +191,27 @@ sub get_issue_watchers {
 }
 
 
+sub get_project {
+    my ($self, $key) = @_;
+    
+    return $self->_client->get_project(key => $key);
+}
+
+
+sub get_project_versions {
+    my ($self, $key) = @_;
+    
+    return $self->_client->get_project_versions(key => $key);
+}
+
+
+sub get_version {
+    my ($self, $id) = @_;
+    
+    return $self->_client->get_version(id => $id);
+}
+
+
 sub unvote_for_issue {
     my ($self, $id) = @_;
 
@@ -205,7 +250,7 @@ JIRA::Client::REST - JIRA REST Client
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -261,6 +306,18 @@ Get voters on the issue.
 =head2 get_issue_watchers($id, $expand)
 
 Get watchers on the issue.
+
+=head2 get_project($key)
+
+Get the project for the specifed key.
+
+=head2 get_project_versions($key)
+
+Get the versions for the project with the specified key.
+
+=head2 get_version($id)
+
+Get the version with the specified id.
 
 =head2 unvote_for_issue($id)
 
